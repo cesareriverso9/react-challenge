@@ -1,4 +1,8 @@
-import './App.css';
+import { useEffect, useState } from "react";
+import { getCards } from "./api";
+import { sortCards } from "./utils/sortData";
+import "./App.css";
+import Card from "./components/Card/Card";
 
 // Questions:
 // 1. Load data from local file (path: “https://ac.aws.citizennet.com/assets/qspreviews/qs_interview_data.json”)
@@ -6,14 +10,23 @@ import './App.css';
 // 3. Add a hover state with a dark, semi-transparent overlay and display the ID of the hovered brand.
 
 function App() {
+  const [cards, setCards] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      const response = await getCards();
+      setCards(sortCards(response.data));
+    })();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <div>
-          Let's start here
-        </div>
-        
-      </header>
+      <ul className="card-container">
+        {cards &&
+          cards.map((card) => {
+            return <Card key={card.source_items.id} card={card} />;
+          })}
+      </ul>
     </div>
   );
 }

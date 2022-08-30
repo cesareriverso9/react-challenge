@@ -1,0 +1,43 @@
+li.card > .wrapper > img {
+    width: 100px;
+    min-height: 100px;
+}
+
+.card-container {
+    display: grid;
+  grid-template-columns: auto auto auto auto;
+}
+
+.card  {
+    display: flex;
+    border: 1px solid #00000026;
+    width: 250px;
+    margin: 10px;
+    height: 150px;
+    padding: 10px 0;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    position: relative;
+}
+
+.card .hover {
+    content: "";
+    position: absolute;
+    width: 100%;
+    align-items: center;
+    vertical-align: middle;
+    background-color: #a3944ac2;
+    height: 100%;
+    border-radius: 10px;
+    border: 1px solid #00000026;
+}
+.card .hover {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    margin: 0;
+    color: #fff;
+}
